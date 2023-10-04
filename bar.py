@@ -27,6 +27,7 @@ def bargraph_callback(app, data, default_processors):
         price_stats_df.columns = ['cpu_processor', 'max_price_eur', 'min_price_eur']
 
         filtered_df = price_stats_df[price_stats_df['cpu_processor'].isin(selected_processors)]
+
         laptop_names_max = []
         laptop_names_min = []
         for processor in selected_processors:
@@ -46,7 +47,8 @@ def bargraph_callback(app, data, default_processors):
                         '<b>Laptop Name (Min)</b>: %{customdata[1]}' + '<extra></extra>'
                         
         
-        customdf = np.stack((filtered_df['laptop_name_max'],filtered_df['laptop_name_min']))         
+        customdf = np.stack((filtered_df['laptop_name_max'],filtered_df['laptop_name_min']))     
+            
         fig = px.bar(
             filtered_df,
             x="cpu_processor",
