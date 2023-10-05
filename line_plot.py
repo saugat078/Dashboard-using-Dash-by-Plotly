@@ -13,7 +13,7 @@ linechart_layout = dcc.Graph(
 def linechart_callback(app, data):
     @app.callback(
         Output("line-chart", "figure"),
-        Input("cpu-processor-dropdown", "value")  # You can keep the original dropdown here if needed
+        Input("cpu-processor-dropdown", "value") 
     )
     def update_line_chart(dummy):
         db = data[['release_year', 'price_eur']]
