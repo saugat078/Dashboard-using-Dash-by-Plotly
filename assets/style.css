@@ -1,0 +1,22 @@
+/* Dropdown */
+#cpu-processor-dropdown {
+    width: 50%;
+  }
+  
+  /* Bar Graph and Pie Chart */
+  .bargraph-piechart-container {
+    display: flex;
+    justify-content: space-between;
+  }
+  
+  /* Line Chart */
+  .linechart-container {
+    display: inline-block;
+    width: 100%;
+  }
+  
+  /* Main Container */
+  .main-container {
+    display: inline-block;
+    width: 100%;
+  }
