@@ -24,5 +24,10 @@ def pie_chart_callback(app, data, default_processors):
         os_counts = filtered_data['operating_system'].value_counts().reset_index()
         print(os_counts)
 
-        fig = px.pie(os_counts, values='count', names='operating_system', hole=0.3)
+        fig = px.pie(
+            os_counts, 
+            values='count', 
+            names='operating_system', 
+            hole=0.3)
+        
         return fig
