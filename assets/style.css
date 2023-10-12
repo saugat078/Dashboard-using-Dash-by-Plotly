@@ -2,7 +2,15 @@
 #cpu-processor-dropdown {
     width: 50%;
   }
-  
+  .parent-div{
+    background-color: white;
+  }
+  .dropdown-container{
+    padding: 10px;
+    height:20px;
+    color:red;
+    margin-bottom: 20px;
+  }
   /* Bar Graph and Pie Chart */
   .bargraph-piechart-container {
     display: flex;
@@ -19,4 +27,22 @@
   .main-container {
     display: inline-block;
     width: 100%;
+  }
+  .box-shadow-container {
+    background-color:#CBC3E3;
+    width: 200px; 
+    height: 100px; 
+    margin-top: 30px;
+    display:flex;
+    border-radius: 20px;
+    justify-content: center;
+    align-items: center;
+    box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
+  }
+  .cont-child{
+    display:flex;
+    justify-content: space-between;
+  }
+  .Select-control{
+    color:red;
   }

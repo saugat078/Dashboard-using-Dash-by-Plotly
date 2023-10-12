@@ -5,6 +5,7 @@ from bar import bargraph_layout, bargraph_callback
 from data_loader import load_data
 from line_plot import linechart_callback,linechart_layout
 from pie_chart import pie_chart_callback,piechart_layout
+from container import container
 
 app = Dash(__name__, external_stylesheets=['/assets/style.css'])
 
@@ -48,12 +49,22 @@ print(default_values)
 #     ])
 app.layout = html.Div([
     html.Div([
+        container("Price","$500"),
+        container("bla","50"),
+        container("bla","50"),
+        container("bla","50"),
+        container("bla","50"),
+        ],className="cont-child"),
+    html.Div([
         dcc.Dropdown(
             id="cpu-processor-dropdown",
             options=options,
             value=default_values,
             multi=True,
-            className="dropdown-container",
+            style={
+                'padding':'10px',
+                'width':'50%',
+            }    
         ),
         html.Div([
             bargraph_layout,
@@ -64,7 +75,8 @@ app.layout = html.Div([
     html.Div([
         linechart_layout,
     ], className="linechart-container"),
-])
+    
+],className="parent-div")
 
 #  callback function execution
 bargraph_callback(app, data, default_values) 
