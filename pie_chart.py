@@ -1,11 +1,12 @@
 import dash_core_components as dcc
 import plotly.express as px
+from colour_constants import custom_colors
 from dash import Input, Output
 
 piechart_layout = dcc.Graph(
     id="pie-graph",
     config={"responsive": True},
-    style={'width': '50%', 'height': '300px'},
+    style={'width': '100%', 'height': '300px'},
 )
 
 def pie_chart_callback(app, data, default_processors):
@@ -29,5 +30,16 @@ def pie_chart_callback(app, data, default_processors):
             values='count', 
             names='operating_system', 
             hole=0.3)
+        fig.update_layout(
+            title="Operating System Distribution",
+            plot_bgcolor=custom_colors['background'],
+            paper_bgcolor=custom_colors['background'],
+            font_color=custom_colors['text'],
+            title_x=0.5,  # Horizontally center the title
+            title_y=0.95,  # Adjust the vertical position of the title
+            title_xanchor='center',  # Center align the title
+            title_yanchor='top',  # Align the title to the top of the graph
+            margin=dict(l=20, r=20, t=40, b=20)  # Add margins to create space around the graph
+        )
         
         return fig

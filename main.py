@@ -8,8 +8,6 @@ from pie_chart import pie_chart_callback,piechart_layout
 from container import container
 
 app = Dash(__name__, external_stylesheets=['/assets/style.css'])
-
-# Load the dataset using the data_loader module
 data = load_data()
 print(type(data))
 
@@ -47,36 +45,47 @@ print(default_values)
 #     ]),
 #     linechart_layout,
 #     ])
-app.layout = html.Div([
-    html.Div([
-        container("Price","$500"),
-        container("bla","50"),
-        container("bla","50"),
-        container("bla","50"),
-        container("bla","50"),
-        ],className="cont-child"),
-    html.Div([
-        dcc.Dropdown(
-            id="cpu-processor-dropdown",
-            options=options,
-            value=default_values,
-            multi=True,
-            style={
-                'padding':'10px',
-                'width':'50%',
-            }    
-        ),
+z=int(data['price_eur'].mean())
+print(z)
+app.layout = html.Div(
+    children=[
         html.Div([
-            bargraph_layout,
-            piechart_layout,
-        ], className="bargraph-piechart-container"),
-    ], className="main-container"),
+            html.Div([
+                container("Mean Price :", f"{z}"),
+                container("bla", "50"),
+                container("bla", "50"),
+                container("bla", "50"),
+            ], className="cont-child"),
+            html.Div([
+                dcc.Dropdown(
+                    id="cpu-processor-dropdown",
+                    options=options,
+                    value=default_values,
+                    multi=True,
+                    style={
+                        'padding': '10px',
+                        'width': '50%',
+                    }
+                ),], className="main-container"),
+                html.Div([
+                html.Div(
+                    bargraph_layout,
+                className="bargraph-container"),
+                html.Div(
+                    piechart_layout,
+                 className="piechart-container"),
+                ],className='container'),
+                # html.Div([
+                #     piechart_layout,
+                # ], className="piechart-container"),
+            html.Div([
+                linechart_layout,
+                ],className="linechart-container"),
+        ], className="parent-div")
+    ]
+)
 
-    html.Div([
-        linechart_layout,
-    ], className="linechart-container"),
-    
-],className="parent-div")
+
 
 #  callback function execution
 bargraph_callback(app, data, default_values) 

@@ -1,12 +1,13 @@
 import dash_core_components as dcc
 import plotly.express as px
 from dash import Output,Input
+from colour_constants import custom_colors
 
 # Define the layout for the line chart
 linechart_layout = dcc.Graph(
     id="line-chart",
     config={"responsive": True},
-    style={'width': '50%', 'height': '300px'},
+    style={'width': '100%', 'height': '300px'},
 )
 
 # Define the callback for the line chart
@@ -30,5 +31,10 @@ def linechart_callback(app, data):
             labels={"year": "release_Year", "price": "price_eur"},
         )
         fig.update_xaxes(tickmode='linear', dtick=1)
+        fig.update_layout(
+            plot_bgcolor=custom_colors['texture'],
+            paper_bgcolor=custom_colors['background'],
+            font_color=custom_colors['text'],
+        )
         return fig
     

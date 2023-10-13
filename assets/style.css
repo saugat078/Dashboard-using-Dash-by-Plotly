@@ -3,7 +3,14 @@
     width: 50%;
   }
   .parent-div{
-    background-color: white;
+    width:100vw;
+    overflow: auto;
+    height:100vh;
+    background-color:#192444;
+  }
+  body{
+    margin:0;
+    overflow:auto;
   }
   .dropdown-container{
     padding: 10px;
@@ -11,38 +18,69 @@
     color:red;
     margin-bottom: 20px;
   }
-  /* Bar Graph and Pie Chart */
-  .bargraph-piechart-container {
-    display: flex;
+  .container{
+    display:flex;
+  }
+  .bargraph-container {
+    flex:1;
+    margin-left: 10px;
+    margin-right: 30px;
+    width: 50%; 
     justify-content: space-between;
+    border-radius: 10px;
+    padding:20px;
+    background-color: #1F2C56;
   }
   
-  /* Line Chart */
+  .piechart-container {
+    flex:1;
+    margin-left: 10px;
+    margin-right: 30px;
+    width: auto; 
+    border-radius: 10px;
+    padding: 20px;
+    background-color: #1F2C56;
+  }
   .linechart-container {
-    display: inline-block;
-    width: 100%;
+    margin-left: 10px;
+    margin-top: 20px;
+    margin-right: 80px;
+    margin-bottom:10px;
+    border-radius: 10px;
+    width:45%;
+    padding: 20px;
+    background-color: #1F2C56;
   }
+  /* @media screen and (max-width: 768px) { */
+    /* Adjust the styles for smaller screens */
+    /* .linechart-container {
+        width: 100%;
+        margin: 10px;
+    }
+} */
+
+
   
-  /* Main Container */
   .main-container {
     display: inline-block;
     width: 100%;
   }
+  
   .box-shadow-container {
     background-color:#CBC3E3;
     width: 200px; 
     height: 100px; 
     margin-top: 30px;
+    margin-left: 10px;
+    margin-right: 30px;
     display:flex;
     border-radius: 20px;
     justify-content: center;
     align-items: center;
-    box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
+    box-shadow:rgba(0, 0, 0, 0.17) 0px -23px 25px 0px inset, rgba(0, 0, 0, 0.15) 0px -36px 30px 0px inset, rgba(0, 0, 0, 0.1) 0px -79px 40px 0px inset, rgba(0, 0, 0, 0.06) 0px 2px 1px, rgba(0, 0, 0, 0.09) 0px 4px 2px, rgba(0, 0, 0, 0.09) 0px 8px 4px, rgba(0, 0, 0, 0.09) 0px 16px 8px, rgba(0, 0, 0, 0.09) 0px 32px 16px;
   }
   .cont-child{
     display:flex;
     justify-content: space-between;
   }
-  .Select-control{
-    color:red;
-  }
+

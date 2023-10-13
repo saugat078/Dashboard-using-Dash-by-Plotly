@@ -1,13 +1,16 @@
 import dash_core_components as dcc
 import plotly.express as px
 from dash import Input, Output
+from colour_constants import custom_colors
 import numpy as np
 
-# Define the layout for the bar graph
+
+
+# layout for the bar graph
 bargraph_layout = dcc.Graph(
     id="graph",
     config={"responsive": True},
-    style={'width': '50%', 'height': '300px'},
+    style={'width': '100%', 'height': '300px'},
 )
 
 def bargraph_callback(app, data, default_processors):
@@ -50,6 +53,11 @@ def bargraph_callback(app, data, default_processors):
         y_range = [0, max(price_stats_df['max_price_eur'].max(), price_stats_df['min_price_eur'].max())]
 
         fig.update_layout(yaxis=dict(range=y_range))
+        fig.update_layout(
+            plot_bgcolor=custom_colors['background'],
+            paper_bgcolor=custom_colors['background'],
+            font_color=custom_colors['text'],
+            )
         fig.update_traces(hovertemplate=hover_template_max, selector=dict(name='max_price_eur'))
         fig.update_traces(hovertemplate=hover_template_min, selector=dict(name='min_price_eur'))
 
