@@ -35,6 +35,7 @@ def pie_chart_callback(app, data, default_processors):
             plot_bgcolor=custom_colors['background'],
             paper_bgcolor=custom_colors['background'],
             font_color=custom_colors['text'],
+            font_family="FreeSerif",
             title_x=0.5,  # Horizontally center the title
             title_y=0.95,  # Adjust the vertical position of the title
             title_xanchor='center',  # Center align the title

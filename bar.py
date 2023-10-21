@@ -57,6 +57,7 @@ def bargraph_callback(app, data, default_processors):
             plot_bgcolor=custom_colors['background'],
             paper_bgcolor=custom_colors['background'],
             font_color=custom_colors['text'],
+            font_family="FreeSerif",
             )
         fig.update_traces(hovertemplate=hover_template_max, selector=dict(name='max_price_eur'))
         fig.update_traces(hovertemplate=hover_template_min, selector=dict(name='min_price_eur'))

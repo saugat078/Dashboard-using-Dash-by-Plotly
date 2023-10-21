@@ -5,7 +5,10 @@ from bar import bargraph_layout, bargraph_callback
 from data_loader import load_data
 from line_plot import linechart_callback,linechart_layout
 from pie_chart import pie_chart_callback,piechart_layout
+from scatter_plot import scatter_plot_callback,scatter_plot_layout
 from container import container
+from dash_iconify import DashIconify
+
 
 app = Dash(__name__, external_stylesheets=['/assets/style.css'])
 data = load_data()
@@ -46,27 +49,26 @@ print(default_values)
 #     linechart_layout,
 #     ])
 z=int(data['price_eur'].mean())
+y=int(data['price_eur'].count())
 print(z)
 app.layout = html.Div(
     children=[
         html.Div([
+            html.Div([html.H3("NOTEBOOK DASHBOARD",style={"color":"white","font-family":"FreeSerif"}),],style={"display":"flex","justify-content":"center"}),
             html.Div([
-                container("Mean Price :", f"{z}"),
-                container("bla", "50"),
-                container("bla", "50"),
-                container("bla", "50"),
+                container(f"$ {z}","Mean Price",DashIconify(icon="fa-solid:dollar-sign"),),
+                container(f"{y}","Total Products ",DashIconify(icon="fa-solid:shield-alt"),),
+                # container("bla", "50"),
+                # container("bla", "50"),
             ], className="cont-child"),
-            html.Div([
+             html.Div([html.H3("select processors from drop down to view the analytics",style={"font-family":"FreeSerif","color":"white"}),],style={"display":"flex","margin-left":"20px"}),
                 dcc.Dropdown(
                     id="cpu-processor-dropdown",
                     options=options,
                     value=default_values,
                     multi=True,
-                    style={
-                        'padding': '10px',
-                        'width': '50%',
-                    }
-                ),], className="main-container"),
+                    className="dropdown-style",
+                ),
                 html.Div([
                 html.Div(
                     bargraph_layout,
@@ -74,6 +76,9 @@ app.layout = html.Div(
                 html.Div(
                     piechart_layout,
                  className="piechart-container"),
+                html.Div(
+                    scatter_plot_layout,
+                 className="scatterplot-container"),
                 ],className='container'),
                 # html.Div([
                 #     piechart_layout,
@@ -91,5 +96,6 @@ app.layout = html.Div(
 bargraph_callback(app, data, default_values) 
 linechart_callback(app,data)
 pie_chart_callback(app,data,default_values)
+scatter_plot_callback(app,data,default_values)
 if __name__ == '__main__':
     app.run_server(debug=True)

@@ -4,15 +4,16 @@ import dash_html_components as html
 import pandas as pd
 
 
-def container(title,value):
+def container(value,title,icon_component):
     return html.Div(
-        className="box-shadow-container",
+        className="kpi-card",
         children=[
-            html.H3(title),
+            html.H3(value,className="card-value"),
+            html.Div([icon_component,],className="icon-i"),
             dcc.Loading(
                 type="default",
                 children=[
-                    html.P(value),
+                    html.P(title,className="card-text "),
                 ],
             ),
         ],
