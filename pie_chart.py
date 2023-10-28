@@ -40,7 +40,7 @@ def pie_chart_callback(app, data, default_processors):
             title_y=0.95,  # Adjust the vertical position of the title
             title_xanchor='center',  # Center align the title
             title_yanchor='top',  # Align the title to the top of the graph
-            margin=dict(l=20, r=20, t=40, b=20)  # Add margins to create space around the graph
+            margin=dict(l=20, r=20, t=60, b=20)  # Add margins to create space around the graph
         )
         
         return fig

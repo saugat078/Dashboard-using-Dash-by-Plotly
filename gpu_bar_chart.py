@@ -3,17 +3,18 @@ import plotly.express as px
 from dash import Input, Output
 from colour_constants import custom_colors
 
-scatter_plot_layout = dcc.Graph(
-    id="scatter-plot",
-    config={"responsive": True,
-            "displayModeBar":False},
+# Define the layout for the bar chart component
+bar_chart_layout = dcc.Graph(
+    id="gpu-distribution-bar-chart",
+    config={"responsive": True, "displayModeBar": False},
     style={'width': '100%', 'height': '300px'},
 )
 
-def scatter_plot_callback(app, data, default_processors):
+# Create a callback to update the GPU distribution bar chart
+def gpu_distribution_callback(app, data,default_processors):
     @app.callback(
-        Output("scatter-plot", "figure"),
-        Input("cpu-processor-dropdown", "value")
+        Output("gpu-distribution-bar-chart", "figure"),
+        Input("cpu-processor-dropdown", "value")  # Use the same dropdown as the CPU processor dropdown
     )
     def update_scatter_plot(selected_processors):
         if not selected_processors:
@@ -24,14 +25,11 @@ def scatter_plot_callback(app, data, default_processors):
         filtered_data = data[data['cpu_processor'].isin(selected_processors)]
         print(filtered_data)
 
-        fig = px.scatter(
+        fig = px.bar(
             filtered_data, 
-            x='display_inch', 
-            y='weight_kg',
-            color='operating_system',
-            title="Display size vs Weight Scatter Plot",
-        )
-        
+            x=['gpu_integrated', 'gpu_extra'], 
+            title=f"GPU Type Distribution for Selected Processors")
+
         fig.update_layout(
             plot_bgcolor=custom_colors['background'],
             paper_bgcolor=custom_colors['background'],
@@ -43,5 +41,5 @@ def scatter_plot_callback(app, data, default_processors):
             title_yanchor='top',
             margin=dict(l=20, r=20, t=40, b=20)
         )
-        
+
         return fig

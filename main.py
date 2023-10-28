@@ -1,11 +1,10 @@
 from dash import Dash, dcc, html
-
-# Import the components and data_loader module
 from bar import bargraph_layout, bargraph_callback
 from data_loader import load_data
 from line_plot import linechart_callback,linechart_layout
 from pie_chart import pie_chart_callback,piechart_layout
 from scatter_plot import scatter_plot_callback,scatter_plot_layout
+from gpu_bar_chart import bar_chart_layout,gpu_distribution_callback
 from container import container
 from dash_iconify import DashIconify
 
@@ -80,12 +79,13 @@ app.layout = html.Div(
                     scatter_plot_layout,
                  className="scatterplot-container"),
                 ],className='container'),
-                # html.Div([
-                #     piechart_layout,
-                # ], className="piechart-container"),
+            html.Div([
             html.Div([
                 linechart_layout,
                 ],className="linechart-container"),
+            html.Div([
+                bar_chart_layout,
+                ],className="barchart-container"),],className="line-gpu-container")
         ], className="parent-div")
     ]
 )
@@ -97,5 +97,8 @@ bargraph_callback(app, data, default_values)
 linechart_callback(app,data)
 pie_chart_callback(app,data,default_values)
 scatter_plot_callback(app,data,default_values)
+gpu_distribution_callback(app,data,default_values)
+
+
 if __name__ == '__main__':
-    app.run_server(debug=True)
+    app.run_server(debug=True, host='192.168.254.6', port=8050)
