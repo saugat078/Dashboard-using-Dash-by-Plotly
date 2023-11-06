@@ -101,4 +101,4 @@ gpu_distribution_callback(app,data,default_values)
 
 
 if __name__ == '__main__':
-    app.run_server(debug=True, host='192.168.254.6', port=8050)
+    app.run_server(debug=True)
