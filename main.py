@@ -5,6 +5,7 @@ from line_plot import linechart_callback,linechart_layout
 from pie_chart import pie_chart_callback,piechart_layout
 from scatter_plot import scatter_plot_callback,scatter_plot_layout
 from gpu_bar_chart import bar_chart_layout,gpu_distribution_callback
+from boxplot import dimensions_boxplot_callback,boxplot_layout_dimensions
 from container import container
 from dash_iconify import DashIconify
 
@@ -49,6 +50,10 @@ print(default_values)
 #     ])
 z=int(data['price_eur'].mean())
 y=int(data['price_eur'].count())
+s=int(data['display_inch'].mean())
+p=int(data['weight_kg'].mean())
+display_resolution_counts = data['display_resolution'].value_counts()
+q=display_resolution_counts.idxmax()
 print(z)
 app.layout = html.Div(
     children=[
@@ -57,6 +62,9 @@ app.layout = html.Div(
             html.Div([
                 container(f"$ {z}","Mean Price",DashIconify(icon="fa-solid:dollar-sign"),),
                 container(f"{y}","Total Products ",DashIconify(icon="fa-solid:shield-alt"),),
+                container(f"{s} inch","Average Display Size",DashIconify(icon="fa-solid:shield-alt"),),
+                container(f"{p} kg","Average Weight ",DashIconify(icon="fa-solid:shield-alt"),),
+                container(f"{q} ","popular display resolution ",DashIconify(icon="fa-solid:shield-alt"),),
                 # container("bla", "50"),
                 # container("bla", "50"),
             ], className="cont-child"),
@@ -85,7 +93,11 @@ app.layout = html.Div(
                 ],className="linechart-container"),
             html.Div([
                 bar_chart_layout,
-                ],className="barchart-container"),],className="line-gpu-container")
+                ],className="barchart-container"),
+            html.Div([
+               boxplot_layout_dimensions
+                ],className="box-plot")
+                ],className="line-gpu-container")
         ], className="parent-div")
     ]
 )
@@ -98,7 +110,8 @@ linechart_callback(app,data)
 pie_chart_callback(app,data,default_values)
 scatter_plot_callback(app,data,default_values)
 gpu_distribution_callback(app,data,default_values)
+dimensions_boxplot_callback(app,data,default_values)
 
 
 if __name__ == '__main__':
-    app.run_server(debug=True)
+    app.run_server(debug=True,host='0.0.0.0')
