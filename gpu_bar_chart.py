@@ -4,14 +4,14 @@ import numpy as np
 from dash import Input, Output
 from colour_constants import custom_colors
 
-# Define the layout for the bar chart component
+# layout for the bar chart component
 bar_chart_layout = dcc.Graph(
     id="gpu-distribution-bar-chart",
     config={"responsive": True, "displayModeBar": False},
     style={'width': '100%', 'height': '300px'},
 )
 
-# Create a callback to update the GPU distribution bar chart
+# callback to update the GPU distribution bar chart
 def gpu_distribution_callback(app, data, default_processors):
     @app.callback(
         Output("gpu-distribution-bar-chart", "figure"),
@@ -25,7 +25,7 @@ def gpu_distribution_callback(app, data, default_processors):
 
         filtered_data = data[data['cpu_processor'].isin(selected_processors)]
 
-        # Calculate the count of GPU types for 'gpu_integrated' and 'gpu_extra'
+        # count of GPU types for 'gpu_integrated' and 'gpu_extra'
         filtered_data['gpu_integrated_count'] = filtered_data.groupby('gpu_integrated')['gpu_integrated'].transform('count')
         filtered_data['gpu_extra_count'] = filtered_data.groupby('gpu_extra')['gpu_extra'].transform('count')
 

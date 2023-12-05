@@ -5,18 +5,18 @@ import numpy as np
 from dash import dcc
 from colour_constants import custom_colors
 
-# Define the layout for the boxplot component
+# layout for the boxplot component
 boxplot_layout_dimensions = dcc.Graph(
     id="dimensions-boxplot",
     config={"responsive": True, "displayModeBar": False},
     style={'width': '100%', 'height': '300px'},
 )
 
-# Create a callback to update the dimensions boxplot
+# callback to update the dimensions boxplot
 def dimensions_boxplot_callback(app, data,default_processors):
     @app.callback(
         Output("dimensions-boxplot", "figure"),
-        Input("cpu-processor-dropdown", "value")  # Assuming you have a CPU processor dropdown for selection
+        Input("cpu-processor-dropdown", "value")  
     )
     def update_dimensions_boxplot(selected_processors):
         if not selected_processors:

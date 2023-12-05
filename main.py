@@ -17,7 +17,7 @@ print(type(data))
 # Filter out rows with missing or incorrect values in the 'cpu_processor' column
 valid_processors = data['cpu_processor'].dropna().unique()
 
-# Create options for the Dropdown
+# options for the Dropdown
 options = [{"label": processor, "value": processor} for processor in valid_processors]
 
 def default(count,index,valid_processors):
@@ -114,4 +114,4 @@ dimensions_boxplot_callback(app,data,default_values)
 
 
 if __name__ == '__main__':
-    app.run_server(debug=True,host='0.0.0.0')
+    app.run_server(debug=True,)

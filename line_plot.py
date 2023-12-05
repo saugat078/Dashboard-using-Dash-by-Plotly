@@ -3,14 +3,14 @@ import plotly.express as px
 from dash import Output,Input
 from colour_constants import custom_colors
 
-# Define the layout for the line chart
+# layout for the line chart
 linechart_layout = dcc.Graph(
     id="line-chart",
     config={"responsive": True},
     style={'width': '100%', 'height': '300px'},
 )
 
-# Define the callback for the line chart
+# callback for the line chart
 def linechart_callback(app, data):
     @app.callback(
         Output("line-chart", "figure"),
