@@ -36,7 +36,10 @@ def bargraph_callback(app, data, default_processors):
         hover_template_min = '<b>CPU Processor</b>: %{x}' + '<br>' + \
                             '<b>Min Price</b>: %{y:.2f} EUR' + '<br>' + \
                             '<b>Laptop Name (Min)</b>: %{customdata[1]}' + '<extra></extra>'
-
+        
+        max_name_length = 20  #trim laptop names
+        filtered_df['laptop_name_max'] = filtered_df['laptop_name_max'].str[:max_name_length]
+        filtered_df['laptop_name_min'] = filtered_df['laptop_name_min'].str[:max_name_length]
         customdf = np.stack((filtered_df['laptop_name_max'], filtered_df['laptop_name_min']))
 
         fig = px.bar(
@@ -53,6 +56,7 @@ def bargraph_callback(app, data, default_processors):
         y_range = [0, max(price_stats_df['max_price_eur'].max(), price_stats_df['min_price_eur'].max())]
 
         fig.update_layout(yaxis=dict(range=y_range))
+        fig.update_layout(hovermode='closest') 
         fig.update_layout(
             plot_bgcolor=custom_colors['background'],
             paper_bgcolor=custom_colors['background'],
@@ -62,7 +66,7 @@ def bargraph_callback(app, data, default_processors):
             title_y=0.95, 
             title_xanchor='center',
             title_yanchor='top',  
-            margin=dict(l=20, r=20, t=60, b=20)  
+            margin=dict(l=20, r=20, t=60, b=20),
             )
         fig.update_traces(hovertemplate=hover_template_max, selector=dict(name='max_price_eur'))
         fig.update_traces(hovertemplate=hover_template_min, selector=dict(name='min_price_eur'))

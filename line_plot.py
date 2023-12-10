@@ -35,6 +35,7 @@ def linechart_callback(app, data):
             plot_bgcolor=custom_colors['texture'],
             paper_bgcolor=custom_colors['background'],
             font_color=custom_colors['text'],
+            font_family="FreeSerif"
         )
         return fig
     

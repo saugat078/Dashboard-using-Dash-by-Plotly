@@ -34,7 +34,7 @@ def gpu_distribution_callback(app, data, default_processors):
         fig = px.bar(
             filtered_data, 
             x=['gpu_integrated', 'gpu_extra'],
-            title=f"GPU Type Distribution for Selected Processors",
+            title=f"GPU Type Distribution",
             custom_data=customdf,
         )
        
