@@ -22,6 +22,7 @@ def linechart_callback(app, data):
         # Drop rows with null values in any column
         db.dropna(inplace=True)    
         avg_data = db.groupby('release_year').mean().reset_index()
+        avg_data['price_eur'] = avg_data['price_eur'].astype(int)
         print(avg_data)
         fig = px.line(
             avg_data,

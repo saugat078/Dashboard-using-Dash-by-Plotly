@@ -4,8 +4,6 @@ from dash import Input, Output
 from colour_constants import custom_colors
 import numpy as np
 
-
-
 # layout for the bar graph
 bargraph_layout = dcc.Graph(
     id="graph",

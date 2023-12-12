@@ -28,7 +28,7 @@ def scatter_plot_callback(app, data, default_processors):
             filtered_data, 
             x='display_inch', 
             y='weight_kg',
-            color='operating_system',
+            color='cpu_processor',
             title="Display size vs Weight Scatter Plot",
         )
         
