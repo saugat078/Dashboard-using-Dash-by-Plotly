@@ -25,6 +25,8 @@ def dimensions_boxplot_callback(app, data, default_processors):
 
         # Filter data based on selected processors
         filtered_data = data[data['cpu_processor'].isin(selected_processors)]
+        max_name_length = 20 
+        filtered_data['name'] = filtered_data['name'].str[:max_name_length]
 
         # Selecting relevant columns for dimensions boxplot
         dimension_columns = ['height_mm', 'width_mm', 'depth_mm']
@@ -33,8 +35,14 @@ def dimensions_boxplot_callback(app, data, default_processors):
             filtered_data,
             y=dimension_columns,
             title="Boxplot of Dimensions",
-            points="outliers"
+            points="outliers",
+            hover_data=['name']
         )
+        outliers = (
+            (filtered_data[dimension_columns] < fig.data[0].lowerfence) |
+            (filtered_data[dimension_columns] > fig.data[0].upperfence)
+        )
+        print(outliers)
         # Customize layout
         fig.update_layout(
             plot_bgcolor=custom_colors['background'],
@@ -47,5 +55,10 @@ def dimensions_boxplot_callback(app, data, default_processors):
             title_yanchor='top',
             margin=dict(l=20, r=20, t=40, b=20),
         )
+        
+        
+
         return fig
+
+
 

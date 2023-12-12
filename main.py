@@ -6,6 +6,9 @@ from pie_chart import pie_chart_callback,piechart_layout
 from scatter_plot import scatter_plot_callback,scatter_plot_layout
 from gpu_bar_chart import bar_chart_layout,gpu_distribution_callback
 from boxplot import dimensions_boxplot_callback,boxplot_layout_dimensions
+from bool_bar import bargraph_layout_boolean,bargraph_callback_boolean
+from battery_boxplot import battery_boxplot_callback,battery_boxplot_layout
+from ram_scatter_plot import ram_scatter_callback,ram_scatter_layout
 from container import container
 from dash_iconify import DashIconify
 
@@ -96,9 +99,17 @@ app.layout = html.Div(
                 ],className="barchart-container"),
             html.Div([
                boxplot_layout_dimensions
-                ],className="box-plot")
-                ],className="line-gpu-container")
-        ], className="parent-div")
+                ],className="box-plot"),
+                ],className="line-gpu-container"),
+            html.Div([
+                html.Div([
+               battery_boxplot_layout],className="linechart-container"),
+                html.Div([
+               bargraph_layout_boolean],className="barchart-container"),
+                html.Div([
+               ram_scatter_layout],className="box-plot"),
+            ],className="line-gpu-container"),
+        ],className="parent-div"),
     ]
 )
 
@@ -111,7 +122,8 @@ pie_chart_callback(app,data,default_values)
 scatter_plot_callback(app,data,default_values)
 gpu_distribution_callback(app,data,default_values)
 dimensions_boxplot_callback(app,data,default_values)
-
-
+bargraph_callback_boolean(app,data,default_values)
+battery_boxplot_callback(app,data,default_values)
+ram_scatter_callback(app,data,default_values)
 if __name__ == '__main__':
     app.run_server(debug=True,)
