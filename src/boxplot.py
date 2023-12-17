@@ -2,7 +2,7 @@ import dash_core_components as dcc
 import plotly.express as px
 from dash import Input, Output
 from dash import dcc
-from src.colour_constants import custom_colors
+from colour_constants import custom_colors
 
 # layout for the boxplot component
 boxplot_layout_dimensions = dcc.Graph(

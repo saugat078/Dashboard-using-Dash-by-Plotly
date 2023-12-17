@@ -1,6 +1,6 @@
 import dash_core_components as dcc
 import plotly.express as px
-from src.colour_constants import custom_colors
+from colour_constants import custom_colors
 from dash import Input, Output
 
 piechart_layout = dcc.Graph(
