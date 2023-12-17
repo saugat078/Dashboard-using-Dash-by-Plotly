@@ -35,7 +35,7 @@ def ram_scatter_callback(app, data, default_processors):
             color="cpu_processor",
             size="psu_watts",
             hover_data=["name"],
-            title="RAM Size vs Power Consumption Scatter Plot",
+            title="RAM Size vs Power Supply Scatter Plot",
             labels={"ram_memory": "RAM Size (GB)", "psu_watts": "Power Supply Unit (Watts)"},
         )
         fig.update_layout(

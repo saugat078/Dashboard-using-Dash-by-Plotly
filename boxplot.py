@@ -36,13 +36,8 @@ def dimensions_boxplot_callback(app, data, default_processors):
             y=dimension_columns,
             title="Boxplot of Dimensions",
             points="outliers",
-            hover_data=['name']
+            hover_data=['name','cpu_processor']
         )
-        outliers = (
-            (filtered_data[dimension_columns] < fig.data[0].lowerfence) |
-            (filtered_data[dimension_columns] > fig.data[0].upperfence)
-        )
-        print(outliers)
         # Customize layout
         fig.update_layout(
             plot_bgcolor=custom_colors['background'],
