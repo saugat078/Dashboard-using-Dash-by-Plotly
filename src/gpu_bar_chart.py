@@ -2,7 +2,7 @@ import dash_core_components as dcc
 import plotly.express as px
 import numpy as np
 from dash import Input, Output
-from colour_constants import custom_colors
+from src.colour_constants import custom_colors
 
 # layout for the bar chart component
 bar_chart_layout = dcc.Graph(

@@ -1,7 +1,7 @@
 import dash_core_components as dcc
 import plotly.express as px
 from dash import Input, Output
-from colour_constants import custom_colors
+from src.colour_constants import custom_colors
 
 # Layout for the box plot
 battery_boxplot_layout = dcc.Graph(
