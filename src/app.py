@@ -126,5 +126,6 @@ dimensions_boxplot_callback(app,data,default_values)
 bargraph_callback_boolean(app,data,default_values)
 battery_boxplot_callback(app,data,default_values)
 ram_scatter_callback(app,data,default_values)
+
 if __name__ == '__main__':
     app.run_server(debug=True,port="8050")
